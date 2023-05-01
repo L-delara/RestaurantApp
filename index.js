@@ -1,11 +1,11 @@
-const express = require("express");
 require("dotenv").config();
-const placesController = require("./controllers/places");
-
+const express = require("express");
 const app = express();
 
+app.use("/places", require("./controllers/places"));
+
 app.get("/", (req, res) => {
-  res.send("Hello world!");
+  res.send("Hello world! Welcome to home!");
 });
 
 app.get("*", (req, res) => {
@@ -13,7 +13,7 @@ app.get("*", (req, res) => {
 });
 
 //routes
-app.use("/places", placesController);
+
 const PORT = process.env.PORT;
 
 app.listen(PORT, console.log(`listening on port ${PORT}`));
