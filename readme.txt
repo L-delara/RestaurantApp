@@ -26,3 +26,10 @@ POST    |  /places/:id/rant     | Create a rant (comment) about a particular pla
 DELETE  | /places/:id/rant/:rantId  |  Delete a rant (comment) about a particular place
 
 GET     |    *                   | 404 page (matches any route not defined above)
+
+
+
+raspberry cake: Photo by <a href="https://unsplash.com/it/@anna_tukhfatullina?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Anna Tukhfatullina Food Photographer/Stylist</a> on <a href="https://unsplash.com/images/food?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
+sushi: Photo by <a href="https://unsplash.com/pt-br/@lucbercoth?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Luc Bercoth</a> on <a href="https://unsplash.com/s/photos/sushi?orientation=portrait&utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+  
