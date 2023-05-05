@@ -6,6 +6,7 @@ router.get("/new", (req, res) => {
 });
 
 router.get("/", (req, res) => {
+  res.send("GET /places stub");
   let places = [
     {
       name: "Tokyo Sushi",
