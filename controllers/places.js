@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const places = require("../models/places");
 
 // GET /places
 router.get("/new", (req, res) => {
@@ -6,30 +7,22 @@ router.get("/new", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-  res.send("GET /places stub");
-  let places = [
-    {
-      name: "Tokyo Sushi",
-      city: "Seattle",
-      state: "WA",
-      cuisines: "Japanese, Pan-Asian",
-      pic: "/images/sushi.jpg",
-    },
-    {
-      name: "Coding Cat Cafe",
-      city: "Boston",
-      state: "MA",
-      cuisines: "Coffee, Bakery",
-      pic: "/images/raspberry-cake.jpg",
-    },
-  ];
-
   res.render("places/index", { places });
 });
 
 router.post("/", (req, res) => {
-  console.log(req.body);
-  res.send("POST /places");
+  if (!req.body.pic) {
+    // Default image if one is not provided
+    req.body.pic = "https://media4.giphy.com/media/Byp2MtxE5Tyla/200w.gif";
+  }
+  if (!req.body.city) {
+    req.body.city = "Anytown";
+  }
+  if (!req.body.state) {
+    req.body.state = "USA";
+  }
+  places.push(req.body);
+  res.redirect("/places");
 });
 
 module.exports = router;
