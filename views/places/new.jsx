@@ -22,8 +22,8 @@ function new_form() {
               <label htmlFor="name">* Cuisine Type:</label>
               <input
                 className="form-control"
-                id="name"
-                name="name"
+                id="cuisines"
+                name="cuisines"
                 required
               />
             </div>
