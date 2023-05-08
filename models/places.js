@@ -1,16 +1,12 @@
-module.exports = [
-  {
-    name: "Tokyo Sushi",
-    city: "Seattle",
-    state: "WA",
-    cuisines: "Japanese, Pan-Asian",
-    pic: "/images/sushi.jpg",
-  },
-  {
-    name: "Coding Cat Cafe",
-    city: "Boston",
-    state: "MA",
-    cuisines: "Coffee, Bakery",
-    pic: "/images/raspberry-cake.jpg",
-  },
-];
+const mongoose = require("mongoose");
+
+const placeSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  cuisines: { type: String, required: true },
+  pic: String,
+
+  city: { type: String, default: "Anytown" },
+  state: { type: String, default: "USA" },
+});
+
+module.exports = mongoose.model("Place", placeSchema);
