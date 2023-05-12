@@ -22,11 +22,11 @@ function show(data) {
                 <h5 className="card-title">{data.place.cuisines}</h5>
                 <p className="card-text">
                   Rating: No rating yet! <br />
-                  Location: {data.place.city}, {data.place.state}
+                  {data.place.showEstablished()}
                 </p>
 
                 <a
-                  href={`/places/${data.id}/edit`}
+                  href={`/places/${data.place.id}/edit`}
                   className="btn btn-warning"
                 >
                   Edit
@@ -34,7 +34,7 @@ function show(data) {
 
                 <form
                   method="POST"
-                  action={`/places/${data.id}?_method=DELETE`}
+                  action={`/places/${data.place.id}?_method=DELETE`}
                 >
                   <button type="submit" className="btn btn-danger">
                     Delete
