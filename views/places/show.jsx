@@ -61,6 +61,60 @@ function show(data) {
 
         <h3>Reviews</h3>
         <div className="mx-auto commentBox">{comments}</div>
+
+        <h3 className="pt-4">Share Your Rant or Rave!</h3>
+
+        <form
+          action={`/places/${data.place.id}/comment`}
+          method="POST"
+          className="mx-auto w-75"
+        >
+          <div className="row">
+            <div className="form-group col-sm-6">
+              <label htmlFor="author">Author</label>
+              <input id="author" name="author" className="form-control" />
+            </div>
+
+            <div className="form-group col-sm-5">
+              <label htmlFor="stars">Star Rating</label>
+              <input
+                type="range"
+                step="0.5"
+                min="1"
+                max="5"
+                id="stars"
+                name="stars"
+                className="form-range"
+              />
+            </div>
+
+            <div className="form-group col-sm-1">
+              <label htmlFor="rant">Rant?</label>
+              <input
+                type="checkbox"
+                id="rant"
+                name="rant"
+                className="form-check-input form-check mx-auto"
+              />
+            </div>
+          </div>
+
+          <div className="row">
+            <div className="form-group col-sm-12">
+              <label htmlFor="content">Content</label>
+              <textarea
+                id="content"
+                name="content"
+                className="form-control"
+              ></textarea>
+            </div>
+          </div>
+          <input
+            type="submit"
+            className="btn btn-primary mt-3"
+            value="Add Comment"
+          />
+        </form>
       </main>
     </Def>
   );
