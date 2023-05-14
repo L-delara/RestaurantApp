@@ -2,6 +2,20 @@ const React = require("react");
 const Def = require("../default");
 
 function show(data) {
+  let comments = <p className="inactive">No reviews yet! Be the first!</p>;
+
+  if (data.place.comments.length) {
+    comments = data.place.comments.map((c) => {
+      return (
+        <div className="border border-gray rounded col-sm-4">
+          <h2 className="rant">{c.rant ? "Rant! 😡" : "Rave! 😻"}</h2>
+          <p>{c.content}</p>
+          <p className="text-center font-weight-bold">- {c.author}</p>
+          <h5>Rating: {c.stars}</h5>
+        </div>
+      );
+    });
+  }
   return (
     <Def>
       <main>
@@ -46,7 +60,7 @@ function show(data) {
         </div>
 
         <h3>Reviews</h3>
-        <p>No reviews yet! Be the first!</p>
+        <div className="mx-auto commentBox">{comments}</div>
       </main>
     </Def>
   );
