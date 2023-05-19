@@ -5,7 +5,7 @@ const placeSchema = new mongoose.Schema({
   cuisines: { type: String, required: true },
   pic: {
     type: String,
-    default: "https://giphy.com/gifs/cat-food-kitty-Byp2MtxE5Tyla",
+    default: "https://media1.giphy.com/media/aArNhJKRUbPhaqe0Ea/giphy.gif",
   },
   city: { type: String, default: "Anytown" },
   state: { type: String, default: "USA" },
