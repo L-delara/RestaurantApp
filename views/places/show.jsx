@@ -4,7 +4,20 @@ const Def = require("../default");
 function show(data) {
   let comments = <p className="inactive">No reviews yet! Be the first!</p>;
 
+  let rating = <p className="inactive">No ratings yet! Be the first!</p>;
   if (data.place.comments.length) {
+    let sumRatings = data.place.comments.reduce((tot, c) => {
+      return tot + c.stars;
+    }, 0);
+    let averageRating = Math.round(
+      sumRatings / data.place.comments.length
+    );
+    let stars = "";
+    for (let i = 0; i < averageRating; i++) {
+      stars += "⭐️";
+    }
+    rating = <p>{stars} stars</p>;
+
     comments = data.place.comments.map((c) => {
       return (
         <div className="border border-gray rounded col-sm-4">
@@ -12,10 +25,21 @@ function show(data) {
           <p>{c.content}</p>
           <p className="text-center font-weight-bold">- {c.author}</p>
           <h5>Rating: {c.stars}</h5>
+          <form
+            method="POST"
+            action={`/places/${data.place.id}/comment/${c.id}?_method=DELETE`}
+          >
+            <input
+              type="submit"
+              className="btn btn-danger btn-sm"
+              value="Delete Comment"
+            />
+          </form>
         </div>
       );
     });
   }
+
   return (
     <Def>
       <main>
@@ -35,7 +59,7 @@ function show(data) {
               <div className="card-body">
                 <h5 className="card-title">{data.place.cuisines}</h5>
                 <p className="card-text">
-                  Rating: No rating yet! <br />
+                  {rating} <br />
                   {data.place.showEstablished()}
                 </p>
 

@@ -37,12 +37,7 @@ function new_form(data) {
           <div className="row">
             <div className="form-group  col-sm-9">
               <label htmlFor="pic">Place Picture:</label>
-              <input
-                className="form-control"
-                type="url"
-                id="pic"
-                name="pic"
-              />
+              <input className="form-control" id="pic" name="pic" />
             </div>
             <div className="form-group  col-sm-3">
               <label htmlFor="founded">Founded Year:</label>

@@ -57,7 +57,14 @@ router.get("/:id", (req, res) => {
 });
 
 router.put("/:id", (req, res) => {
-  res.send("PUT /places/:id stub");
+  db.Place.findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      res.redirect(`/places/${req.params.id}`);
+    })
+    .catch((err) => {
+      console.log("err", err);
+      res.render("error404");
+    });
 });
 
 router.delete("/:id", (req, res) => {
@@ -102,6 +109,15 @@ router.post("/:id/comment", (req, res) => {
 });
 
 router.delete("/:id/comment/:commentId", (req, res) => {
-  res.send("GET /places/:id/rant/:rantId stub");
+  db.Comment.findByIdAndDelete(req.params.commentId)
+    .then(() => {
+      console.log("Success");
+      res.redirect(`/places/${req.params.id}`);
+    })
+    .catch((err) => {
+      console.log("err", err);
+      res.render("error404");
+    });
 });
+
 module.exports = router;

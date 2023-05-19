@@ -36,10 +36,9 @@ function edit_form(data) {
 
           <div className="row">
             <div className="form-group  col-sm-9">
-              <label htmlFor="pic">Picture URL:</label>
+              <label htmlFor="pic">Picture:</label>
               <input
                 className="form-control"
-                type="url"
                 id="pic"
                 name="pic"
                 value={data.place.pic}
